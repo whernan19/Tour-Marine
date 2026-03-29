@@ -1,0 +1,166 @@
+﻿@model TourMarine.Models.Reserva
+@{
+    Layout = null;
+}
+
+<div class="p-3">
+    <h2 class="fw-bold text-center text-dark mb-4">Reserve Your Exclusive Experience</h2>
+
+    <form method="post" asp-action="CrearReserva">
+
+        <div id="calendarWrapper" class="d-flex justify-content-center mb-3 w-100">
+            <input id="fechaTour" name="Fecha" class="d-none" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+            <div id="calendarContainer"></div>
+        </div>
+
+        <!-- TOUR -->
+        <div class="mb-3">
+            <label for="tipoTour" class="form-label fw-bold mb-1">Please select your experience</label>
+            <select id="tipoTour" name="IdTipoTour" class="form-select" required>
+                <option value="" disabled selected hidden>Select Tour Type</option>
+                @foreach (var tour in ViewBag.Tours)
+                {
+                    <option value="@tour.IdTipoTour">@tour.Nombre</option>
+                }
+            </select>
+        </div>
+
+        <!-- DURACION -->
+        <div class="mb-3">
+            <label for="duracion" class="form-label fw-bold mb-1">Choose your tour duration</label>
+            <select id="duracion" class="form-select" name="Duracion" required>
+                <option value="" disabled selected hidden>Please select duration</option>
+                <option value="3">3 hours</option>
+                <option value="4">4 hours</option>
+                <option value="5">5 hours</option>
+                <option value="7">7 hours</option>
+                <option value="full">Full Day</option>
+            </select>
+        </div>
+
+        <!-- PERSONAS -->
+        <div class="mb-3">
+            <label for="personasInput" class="form-label fw-bold mb-1">How many guests will join?</label>
+            <input id="personasInput" name="Personas" type="number" min="6" max="10" class="form-control" placeholder="Enter number of guests" value="6" required>
+        </div>
+
+        <!-- HORARIOS -->
+        <div class="mb-3">
+            <label for="horarioTour" class="form-label fw-bold mb-1">Choose your preferred time</label>
+            <div id="horarioTour"></div>
+            <input type="hidden" id="horaSeleccionada" name="HoraInicio" />
+        </div>
+
+        <!-- DATOS -->
+        <div class="mb-3">
+            <label for="nombreInput" class="form-label fw-bold mb-1">Enter your full name</label>
+            <input id="nombreInput" name="Nombre" type="text" class="form-control" placeholder="Full Name" required>
+        </div>
+
+        <!-- PRECIO DINÁMICO -->
+        <div class="mb-3">
+            <label for="precioTour" class="form-label fw-bold mb-1">Total Price</label>
+            <p id="precioTour" class="badge bg-dark text-white fs-5 p-2"> $0 </p>
+        </div>
+
+        <!-- BOTÓN -->
+        <button type="submit" class="btn btn-dark w-100 fw-bold py-2">Reserve Now</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "full": 1200 };
+        const capacidadBase = 6;
+        const precioExtraPorPersona = 50;
+
+        const duracionSelect = document.getElementById("duracion");
+        const personasInput = document.getElementById("personasInput");
+        const precioTour = document.getElementById("precioTour");
+        const fechaInput = document.getElementById("fechaTour");
+
+        function actualizarPrecio() {
+            const duracion = duracionSelect.value;
+            let personas = parseInt(personasInput.value) || capacidadBase;
+            if (personas < capacidadBase) personas = capacidadBase;
+
+            if (!duracion) {
+                precioTour.textContent = "Precio: $0";
+                return;
+            }
+
+            const total = preciosBase[duracion] + Math.max(0, personas - capacidadBase) * precioExtraPorPersona;
+            precioTour.textContent = `Price: $${total}`;
+        }
+
+        // Llamar al cambiar duración o personas
+        duracionSelect.addEventListener("change", function () {
+            actualizarPrecio();
+            cargarHorarios();
+        });
+        personasInput.addEventListener("input", actualizarPrecio);
+
+        // Inicializar precio
+        actualizarPrecio();
+
+        // --- Horarios ---
+        function cargarHorarios() {
+            const fecha = fechaInput.value;
+            const duracion = duracionSelect.value;
+            const contenedor = document.getElementById("horarioTour");
+            contenedor.innerHTML = "";
+
+            if (!fecha || !duracion) return;
+
+            const horas = [7, 8, 9, 10, 11, 13, 14, 15];
+
+            fetch("/Reservaciones/ObtenerReservasPorFecha?fecha=" + fecha)
+                .then(res => res.json())
+                .then(reservas => {
+                    if (duracion === "full") {
+                        if (reservas.length === 0) crearBoton(7, 18, contenedor);
+                        else contenedor.innerHTML = "<p class='text-danger'>No disponible</p>";
+                        return;
+                    }
+
+                    const dur = parseInt(duracion);
+                    horas.forEach(h => {
+                        const fin = h + dur;
+                        if (fin > 18) return;
+
+                        const ocupado = reservas.some(r => {
+                            const inicioR = parseInt(r.horaInicio.split(":")[0]);
+                            const finR = inicioR + r.duracion;
+                            return (h < finR && fin > inicioR);
+                        });
+
+                        if (!ocupado) crearBoton(h, fin, contenedor);
+                    });
+                })
+                .catch(() => contenedor.innerHTML = "<p class='text-warning'>Error al cargar horarios</p>");
+        }
+
+        function crearBoton(inicio, fin, contenedor) {
+            const btn = document.createElement("button");
+            const textoInicio = (inicio > 12 ? inicio - 12 : inicio) + (inicio >= 12 ? " pm" : " am");
+            const textoFin = (fin > 12 ? fin - 12 : fin) + (fin >= 12 ? " pm" : " am");
+
+            btn.textContent = `${textoInicio} - ${textoFin}`;
+            btn.className = "btn btn-outline-dark m-1";
+
+            btn.onclick = function () {
+                document.getElementById("horaSeleccionada").value = inicio + ":00";
+                contenedor.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+            };
+
+            contenedor.appendChild(btn);
+        }
+
+        // Inicializar horarios al cargar
+        cargarHorarios();
+
+        // Exponer función para actualizar desde el calendario
+        window.cargarHorarios = cargarHorarios;
+    });
+</script>

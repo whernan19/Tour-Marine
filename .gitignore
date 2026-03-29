@@ -1,0 +1,25 @@
+## Visual Studio / ASP.NET
+.vs/
+bin/
+obj/
+
+## User-specific files
+*.user
+*.suo
+
+## Logs
+*.log
+
+## Database files
+*.mdf
+*.ldf
+
+## Node (si usas JS)
+node_modules/
+
+## Build results
+wwwroot/lib/
+
+## OS files
+.DS_Store
+Thumbs.db

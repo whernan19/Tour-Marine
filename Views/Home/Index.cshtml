@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roosterfish Marine</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Index.css" />
+
+    <!-- FLATPICKR -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="header-full">
+        <header class="main-header d-flex align-items-center justify-content-between px-4">
+            <div class="img-logo">
+                <img src="img/logo_rooster_transparent.png" style="height:70px;">
+                ROOSTERFISH M
+            </div>
+            <nav class="d-flex">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Activities & Tours</a>
+                <a class="nav-link" href="#">Gallery</a>
+                <a class="nav-link" href="#">Contact</a>
+            </nav>
+        </header>
+
+        <div class="hero-text">
+            <h1>Private boat tours from La Cruz, Guanacaste – Costa Rica</h1>
+            <p>Sail through Santa Elena Bay on an exclusive private boat tour.</p>
+        </div>
+
+        <div>
+            <a href="#" id="btnReservar" class="hero-btn">Reserve Now</a>
+        </div>
+    </section>
+
+    <!-- MOMENTOS -->
+    <section class="momentos-section py-5" style="background: #f7f4ee;">
+        <div class="container">
+            
+            <div class="row g-4">
+                <!-- Contenido --> <!-- Contenido Mejorado: Cartas Interactivas -->
+                <section class="momentos-section py-5"
+                         style="background: #f7f4ee;">
+                    <div class="container">
+                        <h2 class="text-center mb-5 fw-bold"
+                            style="letter-spacing: 1px; color: #0f2a35;">
+                            Exclusive Sea Moments
+                        </h2>
+                        <h3>Discover the best fishing trips, sunset tours, and unforgettable moments across Costa Rica’s ocean</h3>
+                        <div class="row g-4">
+                            <!-- Carta 1 -->
+                            <div class="col-md-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <img src="img/roosterfish.LaCruz.CostaRica.jpeg"
+                                         class="card-img-top gallery-img" alt="Roosterfish Catch">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold">Roosterfish Catch</h5>
+                                        <p class="card-text flex-grow-1">
+                                            Vive la emoción de capturar el impresionante pez gallo en las aguas de La Cruz.
+                                        </p>
+                                        <div class="d-grid gap-2">
+                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
+                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Carta 2 --> <div class="col-md-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <img src="img/family.png.jpeg" class="card-img-top gallery-img" alt="Family Fishing Trip">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold">Family Fishing Trip</h5>
+                                        <p class="card-text flex-grow-1">
+                                            Un tour familiar seguro y divertido para disfrutar juntos de la pesca en Costa Rica.
+                                        </p>
+                                        <div class="d-grid gap-2">
+                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
+                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- Carta 3 --> <div class="col-md-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <img src="img/Sailfish.LaCruz.Vela.CostaRica.ElJobo.jpeg" class="card-img-top gallery-img" alt="Sailfish Release">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title fw-bold">Sailfish Release</h5>
+                                        <p class="card-text flex-grow-1">Experimenta la emoción de liberar al marlín vela en su hábitat natural.</p>
+                                        <div class="d-grid gap-2">
+                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
+                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- Carta 4 --> <div class="col-md-3"> <div class="card border-0 shadow-sm h-100"> <img src="img/Paseo.Tour.ElJobo.Sunset.jpeg" class="card-img-top gallery-img" alt="Sunset Tour"> <div class="card-body d-flex flex-column"> <h5 class="card-title fw-bold">Sunset Tour</h5> <p class="card-text flex-grow-1">Disfruta de un tour al atardecer y captura la belleza de la costa desde el mar.</p> <div class="d-grid gap-2"> <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a> <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a> </div> </div> </div> </div>
+                        </div>
+                    </div>
+                </section> <!-- CSS Adicional -->
+                <style>
+                    .momentos-section .gallery-img {
+                        transition: transform 0.4s ease, filter 0.4s ease;
+                    }
+
+                    .momentos-section .card:hover .gallery-img {
+                        transform: scale(1.05);
+                        filter: brightness(1.1);
+                    }
+
+                    .momentos-section .card {
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                        .momentos-section .card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+                        }
+                </style>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modalReserva" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="contenidoReserva"></div>
+        </div>
+    </div>
+
+    <!-- CSS -->
+    <style>
+        .momentos-section .gallery-img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .momentos-section .card:hover .gallery-img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .momentos-section .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .momentos-section .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+            }
+    </style>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        // --- VARIABLES GLOBALES PARA RESERVA ---
+        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "full": 1200 };
+        const capacidadBase = 6;
+        const precioExtraPorPersona = 50;
+
+        // --- FUNCIÓN PARA INICIALIZAR MODAL Y FORMULARIO ---
+        function inicializarReservaModal() {
+
+            const duracionSelect = document.getElementById("duracion");
+            const personasInput = document.getElementById("personasInput");
+            const precioTour = document.getElementById("precioTour");
+            const fechaInput = document.getElementById("fechaTour");
+
+            if (!duracionSelect || !personasInput || !precioTour || !fechaInput) return;
+
+            // --- PRECIO DINÁMICO ---
+            function actualizarPrecio() {
+                const duracion = duracionSelect.value;
+                let personas = parseInt(personasInput.value) || capacidadBase;
+                if (personas < capacidadBase) personas = capacidadBase;
+
+                if (!duracion) { precioTour.textContent = "$0"; return; }
+
+                const total = preciosBase[duracion] + Math.max(0, personas - capacidadBase) * precioExtraPorPersona;
+                precioTour.textContent = `$${total}`;
+            }
+
+            duracionSelect.addEventListener("change", function () {
+                actualizarPrecio();
+                cargarHorarios();
+            });
+            personasInput.addEventListener("input", actualizarPrecio);
+
+            // Inicializar precio
+            actualizarPrecio();
+
+            // --- HORARIOS ---
+            function crearBoton(inicio, fin, contenedor) {
+                const btn = document.createElement("button");
+                const textoInicio = (inicio > 12 ? inicio - 12 : inicio) + (inicio >= 12 ? " pm" : " am");
+                const textoFin = (fin > 12 ? fin - 12 : fin) + (fin >= 12 ? " pm" : " am");
+                btn.textContent = `${textoInicio} - ${textoFin}`;
+                btn.className = "btn btn-outline-dark m-1";
+
+                btn.onclick = function () {
+                    document.getElementById("horaSeleccionada").value = inicio + ":00";
+                    contenedor.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                };
+                contenedor.appendChild(btn);
+            }
+
+            window.cargarHorarios = function () {
+                const duracion = duracionSelect.value;
+                const fecha = fechaInput.value;
+                const contenedor = document.getElementById("horarioTour");
+                contenedor.innerHTML = "";
+                if (!duracion || !fecha) return;
+
+                const horas = [7, 8, 9, 10, 11, 13, 14, 15];
+
+                // FULL DAY
+                if (duracion === "full") {
+                    crearBoton(7, 18, contenedor);
+                    return;
+                }
+
+                const dur = parseInt(duracion);
+                horas.forEach(h => {
+                    const fin = h + dur;
+                    if (fin > 18) return;
+
+                    // Simulación de reservas ocupadas (si tienes API, reemplazar fetch)
+                    fetch("/Reservaciones/ObtenerReservasPorFecha?fecha=" + fecha)
+                        .then(res => res.json())
+                        .then(reservas => {
+                            const ocupado = reservas.some(r => {
+                                const inicioR = parseInt(r.horaInicio.split(":")[0]);
+                                const finR = inicioR + r.duracion;
+                                return (h < finR && fin > inicioR);
+                            });
+                            if (!ocupado) crearBoton(h, fin, contenedor);
+                        })
+                        .catch(() => contenedor.innerHTML = "<p class='text-warning'>Error al cargar horarios</p>");
+                });
+            }
+
+            // Inicializar horarios al abrir modal
+            window.cargarHorarios();
+        }
+
+        // --- ABRIR MODAL ---
+        document.getElementById("btnReservar").addEventListener("click", function (e) {
+            e.preventDefault();
+            const modal = document.getElementById("modalReserva");
+
+            fetch('/Reservaciones/Index')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("contenidoReserva").innerHTML = html;
+
+                    setTimeout(() => {
+                        // Inicializar calendario
+                        flatpickr("#fechaTour", {
+                            inline: true,
+                            appendTo: document.getElementById("calendarContainer"),
+                            minDate: "today",
+                            dateFormat: "Y-m-d",
+                            onChange: function (selectedDates, dateStr) {
+                                document.getElementById("fechaTour").value = dateStr;
+                                if (window.cargarHorarios) window.cargarHorarios();
+                            }
+                        });
+
+                        // Inicializar funciones de modal
+                        inicializarReservaModal();
+                    }, 100);
+
+                    modal.style.display = "flex";
+                });
+        });
+
+        // --- CERRAR MODAL ---
+        document.addEventListener("click", function (e) {
+            const modal = document.getElementById("modalReserva");
+            if (e.target.classList.contains("close-btn") || e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
