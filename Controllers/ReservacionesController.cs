@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using TourMarine.DBContext;
 using TourMarine.Models;
-using System.Linq;
 namespace TourMarine.Controllers
 {
-   
+
 
     public class ReservacionesController : Controller
     {
         private readonly AppDbContext _context;
-        public ReservacionesController(AppDbContext context)
+        private readonly IConfiguration _config;
+        public ReservacionesController(AppDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
         // GET: ReservacionesController
         public IActionResult Index()
@@ -130,5 +134,32 @@ namespace TourMarine.Controllers
             return precioFinal;
         }
 
+    
+        public IActionResult ProbarCorreo()
+        {
+            try
+            {
+                var smtp = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("asdfasdf", "asdfasdfasdf"),
+                    EnableSsl = true
+                };
+
+                var mail = new MailMessage();
+                mail.From = new MailAddress("TU_CORREO@gmail.com");
+                mail.To.Add("w.hernan.ramirez.19@gmail.com");
+
+                mail.Subject = "PRUEBA TOUR MARINE";
+                mail.Body = "Este es un correo de prueba 🔥";
+
+                smtp.Send(mail);
+
+                return Content("Correo enviado correctamente");
+            }
+            catch (Exception ex)
+            {
+                return Content("Error: " + ex.Message);
+            }
+        }
     }
 }
