@@ -39,18 +39,25 @@ namespace TourMarine.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public IActionResult CrearReserva(Reserva reserva)
         {
+            if (string.IsNullOrEmpty(reserva.HoraInicio))
+            {
+                ModelState.AddModelError("", "Debe seleccionar una hora");
+            }
             if (!ModelState.IsValid)
             {
-                // opcional: devolver la misma vista con errores
-                return View(reserva);
+                ViewBag.Tours = _context.TipoTour.ToList();
+                return View("Index", reserva);
             }
+
+            // 🔥 CALCULAR PRECIO
+            reserva.PrecioTotal = CalcularPrecio(reserva.Duracion, reserva.Personas);
 
             _context.Reserva.Add(reserva);
             _context.SaveChanges();
 
-            // Redirige al Home
             return RedirectToAction("Index", "Home");
         }
 
@@ -97,7 +104,7 @@ namespace TourMarine.Controllers
         }
 
 
-        // 🔥 ESTE ES EL IMPORTANTE
+        
         [HttpGet]
         public IActionResult ObtenerReservasPorFecha(string fecha)
         {
@@ -115,17 +122,18 @@ namespace TourMarine.Controllers
             return Json(reservas);
         }
         //precio por personas y horas 
-        public decimal CalcularPrecio(string duracion, int personas)
+        public decimal CalcularPrecio(int duracion, int personas)
         {
             int basePersonas = 6;
+
             decimal precioBase = duracion switch
             {
-                "3" => 600m,
-                "4" => 700m,
-                "5" => 800m,
-                "7" => 900m,
-                "full" => 1200m,
-                _ => 0m
+                3 => 600m,
+                4 => 700m,
+                5 => 800m,
+                7 => 900m,
+                8 => 1200m,
+                _ => throw new Exception("Duración inválida")
             };
 
             int extraPersonas = Math.Max(personas - basePersonas, 0);
@@ -134,7 +142,7 @@ namespace TourMarine.Controllers
             return precioFinal;
         }
 
-    
+
         public IActionResult ProbarCorreo()
         {
             try

@@ -160,7 +160,7 @@
 
     <script>
         // --- VARIABLES GLOBALES PARA RESERVA ---
-        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "full": 1200 };
+        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "8": 1200 };
         const capacidadBase = 6;
         const precioExtraPorPersona = 50;
 
@@ -221,7 +221,7 @@
                 const horas = [7, 8, 9, 10, 11, 13, 14, 15];
 
                 // FULL DAY
-                if (duracion === "full") {
+                if (duracion === "8") {
                     crearBoton(7, 18, contenedor);
                     return;
                 }

@@ -14,8 +14,14 @@ namespace TourMarine.Models
 
         public string Nombre { get; set; }
         public int Personas { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
 
-       
+        public string Estado { get; set; }// Pendiente, Confirmada, Cancelada
+        public decimal PrecioTotal { get; set; }
+
+
+
 
     }
 }

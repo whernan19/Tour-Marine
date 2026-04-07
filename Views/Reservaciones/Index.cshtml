@@ -6,7 +6,7 @@
 <div class="p-3">
     <h2 class="fw-bold text-center text-dark mb-4">Reserve Your Exclusive Experience</h2>
 
-    <form method="post" asp-action="CrearReserva">
+    <form method="post" asp-action="CrearReserva" onsubmit="return validarFormulario()">
 
         <div id="calendarWrapper" class="d-flex justify-content-center mb-3 w-100">
             <input id="fechaTour" name="Fecha" class="d-none" value="@DateTime.Now.ToString("yyyy-MM-dd")">
@@ -34,7 +34,7 @@
                 <option value="4">4 hours</option>
                 <option value="5">5 hours</option>
                 <option value="7">7 hours</option>
-                <option value="full">Full Day</option>
+                <option value="8">Full Day</option>
             </select>
         </div>
 
@@ -56,12 +56,24 @@
             <label for="nombreInput" class="form-label fw-bold mb-1">Enter your full name</label>
             <input id="nombreInput" name="Nombre" type="text" class="form-control" placeholder="Full Name" required>
         </div>
+        <!-- EMAIL -->
+        <div class="mb-3">
+            <label class="form-label fw-bold mb-1">Email Address</label>
+            <input name="Email" type="email" class="form-control" placeholder="example@email.com" required>
+        </div>
+
+        <!-- TELÉFONO -->
+        <div class="mb-3">
+            <label class="form-label fw-bold mb-1">Phone Number</label>
+            <input name="Telefono" type="text" class="form-control" placeholder="506XXXXXXXX" required>
+        </div>
 
         <!-- PRECIO DINÁMICO -->
         <div class="mb-3">
             <label for="precioTour" class="form-label fw-bold mb-1">Total Price</label>
             <p id="precioTour" class="badge bg-dark text-white fs-5 p-2"> $0 </p>
         </div>
+        <input type="hidden" id="precioTotalInput" name="PrecioTotal" />
 
         <!-- BOTÓN -->
         <button type="submit" class="btn btn-dark w-100 fw-bold py-2">Reserve Now</button>
@@ -69,8 +81,19 @@
 </div>
 
 <script>
+    //funcion para validar que el usuario seleccione una hora obligatoriamente
+    function validarFormulario() { 
+        const hora = document.getElementById("horaSeleccionada").value;
+
+        if (!hora) {
+            alert("Please select a time for your tour");
+            return false;
+        }
+
+        return true;
+    }
     document.addEventListener("DOMContentLoaded", function () {
-        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "full": 1200 };
+        const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "8": 1200 };
         const capacidadBase = 6;
         const precioExtraPorPersona = 50;
 
@@ -80,17 +103,26 @@
         const fechaInput = document.getElementById("fechaTour");
 
         function actualizarPrecio() {
+            if (!duracionSelect.value) return;
             const duracion = duracionSelect.value;
-            let personas = parseInt(personasInput.value) || capacidadBase;
-            if (personas < capacidadBase) personas = capacidadBase;
+            let personas = parseInt(personasInput.value);
+
+            if (isNaN(personas) || personas < capacidadBase) {
+                personas = capacidadBase;
+            }
 
             if (!duracion) {
-                precioTour.textContent = "Precio: $0";
+                precioTour.textContent = "$0";
+                document.getElementById("precioTotalInput").value = 0;
                 return;
             }
 
-            const total = preciosBase[duracion] + Math.max(0, personas - capacidadBase) * precioExtraPorPersona;
+            const base = preciosBase[duracion] || 0;
+            const total = base + Math.max(0, personas - capacidadBase) * precioExtraPorPersona;
+            console.log("Duración:", duracion);
+            console.log("Precio base:", preciosBase[duracion]);
             precioTour.textContent = `Price: $${total}`;
+            document.getElementById("precioTotalInput").value = total; 
         }
 
         // Llamar al cambiar duración o personas
@@ -117,9 +149,18 @@
             fetch("/Reservaciones/ObtenerReservasPorFecha?fecha=" + fecha)
                 .then(res => res.json())
                 .then(reservas => {
-                    if (duracion === "full") {
-                        if (reservas.length === 0) crearBoton(7, 18, contenedor);
-                        else contenedor.innerHTML = "<p class='text-danger'>No disponible</p>";
+                    if (duracion === "8") {
+                        if (reservas.length === 0) {
+                            crearBoton(7, 18, contenedor);
+
+                            // 🔥 FORZAR valor válido
+                            document.getElementById("horaInicio").value = "07:00";
+                        } else {
+                            contenedor.innerHTML = "<p class='text-danger'>No disponible</p>";
+
+                            // 🔥 limpiar para evitar NaN
+                            document.getElementById("horaInicio").value = "";
+                        }
                         return;
                     }
 
