@@ -25,7 +25,7 @@
                 <a class="nav-link" href="#">Home</a>
                 <a class="nav-link" href="#">Activities & Tours</a>
                 <a class="nav-link" href="#">Gallery</a>
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a>
             </nav>
         </header>
 
@@ -42,85 +42,87 @@
     <!-- MOMENTOS -->
     <section class="momentos-section py-5" style="background: #f7f4ee;">
         <div class="container">
-            
-            <div class="row g-4">
-                <!-- Contenido --> <!-- Contenido Mejorado: Cartas Interactivas -->
-                <section class="momentos-section py-5"
-                         style="background: #f7f4ee;">
-                    <div class="container">
-                        <h2 class="text-center mb-5 fw-bold"
-                            style="letter-spacing: 1px; color: #0f2a35;">
-                            Exclusive Sea Moments
-                        </h2>
-                        <h3>Discover the best fishing trips, sunset tours, and unforgettable moments across Costa Rica’s ocean</h3>
-                        <div class="row g-4">
-                            <!-- Carta 1 -->
-                            <div class="col-md-3">
-                                <div class="card border-0 shadow-sm h-100">
-                                    <img src="img/roosterfish.LaCruz.CostaRica.jpeg"
-                                         class="card-img-top gallery-img" alt="Roosterfish Catch">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title fw-bold">Roosterfish Catch</h5>
-                                        <p class="card-text flex-grow-1">
-                                            Vive la emoción de capturar el impresionante pez gallo en las aguas de La Cruz.
-                                        </p>
-                                        <div class="d-grid gap-2">
-                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
-                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Carta 2 --> <div class="col-md-3">
-                                <div class="card border-0 shadow-sm h-100">
-                                    <img src="img/family.png.jpeg" class="card-img-top gallery-img" alt="Family Fishing Trip">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title fw-bold">Family Fishing Trip</h5>
-                                        <p class="card-text flex-grow-1">
-                                            Un tour familiar seguro y divertido para disfrutar juntos de la pesca en Costa Rica.
-                                        </p>
-                                        <div class="d-grid gap-2">
-                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
-                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- Carta 3 --> <div class="col-md-3">
-                                <div class="card border-0 shadow-sm h-100">
-                                    <img src="img/Sailfish.LaCruz.Vela.CostaRica.ElJobo.jpeg" class="card-img-top gallery-img" alt="Sailfish Release">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title fw-bold">Sailfish Release</h5>
-                                        <p class="card-text flex-grow-1">Experimenta la emoción de liberar al marlín vela en su hábitat natural.</p>
-                                        <div class="d-grid gap-2">
-                                            <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a>
-                                            <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- Carta 4 --> <div class="col-md-3"> <div class="card border-0 shadow-sm h-100"> <img src="img/Paseo.Tour.ElJobo.Sunset.jpeg" class="card-img-top gallery-img" alt="Sunset Tour"> <div class="card-body d-flex flex-column"> <h5 class="card-title fw-bold">Sunset Tour</h5> <p class="card-text flex-grow-1">Disfruta de un tour al atardecer y captura la belleza de la costa desde el mar.</p> <div class="d-grid gap-2"> <a href="#reserva" class="btn btn-primary btn-sm">Reservar Ahora</a> <a href="#info" class="btn btn-outline-secondary btn-sm">Más Información</a> </div> </div> </div> </div>
+            <h2 class="text-center mb-5 fw-bold"
+                style="letter-spacing: 1px; color: #0f2a35;">
+                Exclusive Sea Moments
+            </h2>
+
+            <h3 class="text-center mb-4">
+                Discover the best fishing trips, sunset tours, and unforgettable moments across Costa Rica’s ocean
+            </h3>
+
+            <div class="row g-4">
+
+                <!-- Carta 1 -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="img/roosterfish.LaCruz.CostaRica.jpeg"
+                             class="card-img-top gallery-img" alt="Roosterfish Catch">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Roosterfish Catch</h5>
+                            <p class="card-text flex-grow-1">
+                                Experience the thrill of catching the impressive roosterfish in the waters of La Cruz.
+                            </p>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-primary btn-sm btnReservar">BOOK NOW</a>
+                                <a href="#info" class="btn btn-outline-secondary btn-sm">READ MORE</a>
+                            </div>
                         </div>
                     </div>
-                </section> <!-- CSS Adicional -->
-                <style>
-                    .momentos-section .gallery-img {
-                        transition: transform 0.4s ease, filter 0.4s ease;
-                    }
+                </div>
 
-                    .momentos-section .card:hover .gallery-img {
-                        transform: scale(1.05);
-                        filter: brightness(1.1);
-                    }
+                <!-- Carta 2 -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="img/family.png.jpeg" class="card-img-top gallery-img">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Family Fishing Trip</h5>
+                            <p class="card-text flex-grow-1">
+                                A safe and fun family tour to enjoy fishing together in Costa Rica.
+                            </p>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-primary btn-sm btnReservar">BOOK NOW</a>
+                                <a href="#info" class="btn btn-outline-secondary btn-sm">READ MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    .momentos-section .card {
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    }
+                <!-- Carta 3 -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="img/Sailfish.LaCruz.Vela.CostaRica.ElJobo.jpeg" class="card-img-top gallery-img">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Sailfish Release</h5>
+                            <p class="card-text flex-grow-1">
+                                Experience the thrill of releasing a sailfish in its natural habitat.
+                            </p>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-primary btn-sm btnReservar">BOOK NOW</a>
+                                <a href="#info" class="btn btn-outline-secondary btn-sm">READ MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        .momentos-section .card:hover {
-                            transform: translateY(-5px);
-                            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-                        }
-                </style>
+                <!-- Carta 4 -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <img src="img/Paseo.Tour.ElJobo.Sunset.jpeg" class="card-img-top gallery-img">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Sunset Tour</h5>
+                            <p class="card-text flex-grow-1">
+                                Enjoy a sunset tour and capture the beauty of the coastline from the sea.
+                            </p>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-primary btn-sm btnReservar">BOOK NOW</a>
+                                <a href="#info" class="btn btn-outline-secondary btn-sm">READ MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -159,6 +161,13 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
+        // BOTONES DE LAS CARDS
+        document.querySelectorAll(".btnReservar").forEach(btn => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("btnReservar").click();
+            });
+        });
         // --- VARIABLES GLOBALES PARA RESERVA ---
         const preciosBase = { "3": 600, "4": 700, "5": 800, "7": 900, "8": 1200 };
         const capacidadBase = 6;

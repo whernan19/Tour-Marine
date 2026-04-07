@@ -207,3 +207,18 @@ header {
     }
 }
 
+.contact-section input,
+.contact-section textarea {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.contact-section button {
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.contact-section a.btn-success {
+    font-weight: bold;
+}
