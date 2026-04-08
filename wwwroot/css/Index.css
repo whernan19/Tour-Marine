@@ -5,7 +5,10 @@
     --champagne: #e6d3a3;
     --warm-white: #f7f4ee;
 }
-
+@font-face {
+    font-family: 'OldNewspaper';
+    src: url('/fonts/OldNewspaperTypes.ttf') format('truetype');
+}
 /* RESET */
 * {
     margin: 0;
@@ -16,7 +19,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.5;
-    background: #f7f4ee;
+    background: #fff;
 }
 
 /* WHATSAPP */
@@ -155,6 +158,14 @@ header {
             box-shadow: 0 15px 25px rgba(0,0,0,0.15);
         }
 
+.momentos-section {
+    min-height: 100vh; /* 🔥 clave */
+
+    background: url('/img/background.png') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
 /* ========================= */
 /* 🔥 MODAL PROFESIONAL 🔥 */
 /* ========================= */
@@ -221,4 +232,13 @@ header {
 
 .contact-section a.btn-success {
     font-weight: bold;
+}
+.btnReservar {
+    background-color: #0a2540 !important;
+    background-image: radial-gradient(circle at 20% 30%, #1b3a5a 20%, transparent 21%), radial-gradient(circle at 70% 60%, #2e5c8a 20%, transparent 21%), radial-gradient(circle at 40% 80%, #0f2f4f 20%, transparent 21%), radial-gradient(circle at 80% 20%, #3a6ea5 20%, transparent 21%);
+    color: white !important;
+    border: none !important;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: all 0.3s ease;
 }
