@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model List<TourMarine.Models.Marea>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -40,7 +42,7 @@
     </section>
 
     <!-- MOMENTOS -->
-    <section class="momentos-section py-5" >
+    <section class="momentos-section py-5">
         <div class="container-fluid">
 
             <h2 class="text-center mb-5 fw-bold"
@@ -125,8 +127,47 @@
 
             </div>
         </div>
-    </section>
+    </section> <!--cierre de los cards -->
+    @*bloque de mareas*@
+    <section class="mareas-section py-5">
+        <div class="container">
 
+            <h2 class="text-center mb-5 fw-bold">
+                Mareas del Instituto Meteorológico Nacional de Costa Rica
+            </h2>
+            <p class="text-center text-muted">
+                <strong>Fuente oficial:</strong> Instituto Meteorológico Nacional de Costa Rica (IMN).<br />
+                <strong>Estación de referencia:</strong> Nacascolo, Guanacaste.<br />
+                Estos valores se utilizan como referencia aproximada para la zona de El Jobo, debido a su proximidad geográfica.<br />
+                Pueden presentarse variaciones locales mínimas según condiciones meteorológicas.
+            </p>
+
+            <div class="row g-3">
+
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var m in Model)
+                    {
+                        <div class="col-md-3">
+                            <div class="card shadow-sm text-center p-3">
+
+                                <h6>@m.Fecha</h6>
+                                <p class="mb-1">@m.Hora</p>
+                                <strong>@m.Altura m</strong>
+
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center">No hay datos de mareas</p>
+                }
+
+            </div>
+
+        </div>
+    </section>
     <!-- MODAL -->
     <div id="modalReserva" class="modal-overlay">
         <div class="modal-content">
