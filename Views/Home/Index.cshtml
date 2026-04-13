@@ -20,7 +20,7 @@
     <section class="header-full">
         <header class="main-header d-flex align-items-center justify-content-between px-4">
             <div class="img-logo">
-                <img src="img/logo_rooster_transparent.png" style="height:70px;">
+                <img src="~/img/logo_rooster_transparent.png" style="height:70px;">
                 ROOSTERFISH M
             </div>
             <nav class="d-flex">
@@ -59,7 +59,7 @@
                 <!-- Carta 1 -->
                 <div class="col-md-3">
                     <div class="card border-0 shadow-sm h-100">
-                        <img src="img/roosterfish.LaCruz.CostaRica.jpeg"
+                        <img src="~/img/roosterfish.LaCruz.CostaRica.jpeg"
                              class="card-img-top gallery-img" alt="Roosterfish Catch">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">Roosterfish Catch</h5>
@@ -77,7 +77,7 @@
                 <!-- Carta 2 -->
                 <div class="col-md-3">
                     <div class="card border-0 shadow-sm h-100">
-                        <img src="img/family.png.jpeg" class="card-img-top gallery-img">
+                        <img src="~/img/family.png.jpeg" class="card-img-top gallery-img">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">Family Fishing Trip</h5>
                             <p class="card-text flex-grow-1">
@@ -94,7 +94,7 @@
                 <!-- Carta 3 -->
                 <div class="col-md-3">
                     <div class="card border-0 shadow-sm h-100">
-                        <img src="img/Sailfish.LaCruz.Vela.CostaRica.ElJobo.jpeg" class="card-img-top gallery-img">
+                        <img src="~/img/Sailfish.LaCruz.Vela.CostaRica.ElJobo.jpeg" class="card-img-top gallery-img">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">Sailfish Release</h5>
                             <p class="card-text flex-grow-1">
@@ -111,7 +111,7 @@
                 <!-- Carta 4 -->
                 <div class="col-md-3">
                     <div class="card border-0 shadow-sm h-100">
-                        <img src="img/Paseo.Tour.ElJobo.Sunset.jpeg" class="card-img-top gallery-img">
+                        <img src="~/img/Paseo.Tour.ElJobo.Sunset.jpeg" class="card-img-top gallery-img">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">Sunset Tour</h5>
                             <p class="card-text flex-grow-1">
@@ -129,45 +129,94 @@
         </div>
     </section> <!--cierre de los cards -->
     @*bloque de mareas*@
-    <section class="mareas-section py-5">
-        <div class="container">
+    @*bloque de mareas*@
+<section class="mareas-section py-5">
 
-            <h2 class="text-center mb-5 fw-bold">
-                Mareas del Instituto Meteorológico Nacional de Costa Rica
-            </h2>
-            <p class="text-center text-muted">
-                <strong>Fuente oficial:</strong> Instituto Meteorológico Nacional de Costa Rica (IMN).<br />
-                <strong>Estación de referencia:</strong> Nacascolo, Guanacaste.<br />
-                Estos valores se utilizan como referencia aproximada para la zona de El Jobo, debido a su proximidad geográfica.<br />
-                Pueden presentarse variaciones locales mínimas según condiciones meteorológicas.
-            </p>
+    <div class="container">
 
-            <div class="row g-3">
+        <h2 class="text-center mb-5 fw-bold">
+            Mareas del Instituto Meteorológico Nacional de Costa Rica
+        </h2>
 
-                @if (Model != null && Model.Any())
-                {
-                    foreach (var m in Model)
-                    {
-                        <div class="col-md-3">
-                            <div class="card shadow-sm text-center p-3">
+        <p class="text-center text-muted">
+            <strong>Fuente oficial:</strong> Instituto Meteorológico Nacional de Costa Rica (IMN).<br />
+            <strong>Estación de referencia:</strong> Nacascolo, Guanacaste.<br />
+            Estos valores se utilizan como referencia aproximada para la zona de El Jobo.<br />
+            Pueden presentarse variaciones locales mínimas según condiciones meteorológicas.
+        </p>
+        <form asp-action="Filtrar" asp-controller="Home" method="get" class="row g-3 justify-content-center mb-4">
 
-                                <h6>@m.Fecha</h6>
-                                <p class="mb-1">@m.Hora</p>
-                                <strong>@m.Altura m</strong>
-
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p class="text-center">No hay datos de mareas</p>
-                }
-
+            <div class="col-md-2">
+                <input type="number"
+                       name="dia"
+                       class="form-control"
+                       placeholder="Día"
+                       min="1" max="31" />
             </div>
 
+            <div class="col-md-2">
+                <input type="number"
+                       name="mes"
+                       class="form-control"
+                       placeholder="Mes"
+                       min="1" max="12" />
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">
+                    Filtrar
+                </button>
+            </div>
+
+            <div class="col-md-2">
+                <a href="/Home/Index" class="btn btn-secondary w-100">
+                    Limpiar
+                </a>
+            </div>
+
+        </form>
+        <div class="table-responsive mt-4">
+
+            <table class="table table-striped table-hover text-center shadow-sm">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Altura (Pies)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var m in Model)
+                        {
+                            <tr>
+                                <td>@m.Fecha.ToString("dd/MM/yyyy")</td>
+                                <td>@m.Hora</td>
+                                <td>@m.Altura.ToString("0.00")"</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-muted">
+                                No hay datos de mareas
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
         </div>
-    </section>
+
+    </div>
+</section>
     <!-- MODAL -->
     <div id="modalReserva" class="modal-overlay">
         <div class="modal-content">

@@ -11,32 +11,43 @@ namespace TourMarine.Services
         {
             _filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "mareas.txt");
         }
-
         public List<Marea> ObtenerMareas()
         {
-            var mareas = new List<Marea>();
+            var list = new List<Marea>();
 
             if (!File.Exists(_filePath))
-                return mareas;
+                return list;
 
             var lines = File.ReadAllLines(_filePath);
 
             foreach (var line in lines)
             {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
                 var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-                mareas.Add(new Marea
+                if (parts.Length < 3)
+                    continue;
+
+                string fechaTexto = parts[0] + " " + parts[1];
+
+                DateTime fecha = DateTime.ParseExact(
+                    fechaTexto,
+                    "dd/MM/yyyy HH:mm",
+                    CultureInfo.InvariantCulture
+                );
+
+                double altura = double.Parse(parts[2], new CultureInfo("es-ES"));
+
+                list.Add(new Marea
                 {
-                    Fecha = parts[0],
+                    Fecha = fecha,
                     Hora = parts[1],
-                    Altura = double.Parse(parts[2], new CultureInfo("es-ES"))
+                    Altura = altura
                 });
             }
 
-            return mareas;
+            return list;
         }
+
     }
+
 }

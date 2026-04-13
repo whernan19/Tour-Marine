@@ -16,13 +16,35 @@ namespace TourMarine.Controllers
             _mareaService = mareaService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? dia, int? mes)
         {
-            var mareas = _mareaService.ObtenerMareas();
+            DateTime hoy = DateTime.Now;
+
+            var mareas = _mareaService.ObtenerMareas()
+                .Where(x => x.Fecha >= hoy)
+                .OrderBy(x => x.Fecha)
+                .Take(10)
+                .ToList();
+
             return View(mareas);
-            
         }
 
+        public IActionResult Filtrar(int? dia, int? mes)
+        {
+            var mareas = _mareaService.ObtenerMareas();
+
+            if (dia.HasValue)
+                mareas = mareas.Where(x => x.Fecha.Day == dia.Value).ToList();
+
+            if (mes.HasValue)
+                mareas = mareas.Where(x => x.Fecha.Month == mes.Value).ToList();
+
+            mareas = mareas
+                .OrderBy(x => x.Fecha)
+                .ToList();
+
+            return View("Index", mareas);
+        }
         public IActionResult Privacy()
         {
             return View();
