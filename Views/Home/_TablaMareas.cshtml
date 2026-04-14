@@ -1,0 +1,10 @@
+﻿@model List<TourMarine.Models.Marea>
+
+@foreach (var m in Model)
+{
+    <tr>
+        <td>@m.Fecha.ToString("dd/MM/yyyy")</td>
+        <td>@m.Hora</td>
+        <td>@m.Altura.ToString("0.00")</td>
+    </tr>
+}

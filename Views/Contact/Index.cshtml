@@ -25,14 +25,54 @@
 </section>
 
 <!-- SECCIÓN DE FORMULARIO -->
-<section class="contact-form-section">
-    <div class="contact-form-container">
-        <h2>Contáctanos</h2>
-        <form>
-            <input type="text" name="name" placeholder="Tu nombre" required>
-            <input type="email" name="email" placeholder="Tu correo" required>
-            <textarea name="message" placeholder="Tu mensaje" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+<section class="contact-form-section py-5">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+
+                <div class="card shadow-lg border-0 p-4">
+
+                    <h2 class="text-center mb-4 fw-bold">Contáctanos</h2>
+
+                    <form>
+
+                        <!-- NOMBRE -->
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Tu nombre" required>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="mb-3">
+                            <label class="form-label">Correo</label>
+                            <input type="email" class="form-control" placeholder="Tu correo" required>
+                        </div>
+                        <!-- EMAIL -->
+                        <div class="mb-3">
+                            <label class="form-label">Telefono</label>
+                            <input type="text" class="form-control" placeholder="+506XXXXXXX" required>
+                        </div>
+
+                        <!-- MENSAJE -->
+                        <div class="mb-4">
+                            <label class="form-label">Mensaje</label>
+                            <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                        </div>
+
+                        <!-- BOTÓN -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btnReservar">
+                                Enviar mensaje
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </section>

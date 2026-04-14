@@ -55,5 +55,18 @@ namespace TourMarine.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpGet]
+        public IActionResult FiltrarAjax(int? dia, int? mes)
+        {
+            var data = _mareaService.ObtenerMareas();
+
+            if (dia.HasValue)
+                data = data.Where(x => x.Fecha.Day == dia).ToList();
+
+            if (mes.HasValue)
+                data = data.Where(x => x.Fecha.Month == mes).ToList();
+
+            return PartialView("_TablaMareas", data);
+        }
     }
 }

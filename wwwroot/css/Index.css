@@ -257,3 +257,40 @@ header {
     object-fit: cover; /* hace que el video cubra todo el contenedor sin deformarse */
     transform: translate(-50%, -50%);
 }
+/* SECCION DE NUESTRO EQUIPO ******************************************************************************************** */
+.team-section .col-md-7 {
+    position: relative;
+}
+
+.team-img {
+    width: 98%;
+    margin-left: -5px;
+    height: 420px;
+    object-fit: cover;
+    
+    border-radius: 18px;
+    
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+   
+    transition: all 0.4s ease;
+}
+@media (max-width: 768px) {
+    .team-img {
+        width: 100%;
+        height: auto;
+    }
+}
+/*FIN SECCION DE NUESTRO EQUIPO *****************************************************************************************************/
+.btnFiltro {
+    background-color: #0a2540 !important;
+    background-image: radial-gradient(circle at 20% 30%, #1b3a5a 20%, transparent 21%), radial-gradient(circle at 70% 60%, #2e5c8a 20%, transparent 21%), radial-gradient(circle at 40% 80%, #0f2f4f 20%, transparent 21%), radial-gradient(circle at 80% 20%, #3a6ea5 20%, transparent 21%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: all 0.3s ease;
+    color: white;
+}
+    .btnFiltro:hover {
+        color: white !important;
+    }
