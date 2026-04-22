@@ -1,56 +1,54 @@
-﻿<link rel="stylesheet" href="~/css/Gallery.css" />
-@{
-    var galeria = new List<dynamic>
-{
-        new { Tipo = "img", Src = "/img/pez.jpeg" },
-        new { Tipo = "video", Src = "/img/Pesca-El-Jobo-La-Cruz-Guanacaste-Costa-Rica.mp4", Preview = "/img/rooster.jpeg" },
-        new { Tipo = "img", Src = "/img/sunset.jpeg" },
-        new { Tipo = "video", Src = "/img/sport-fishing-el-jobo-costa-rica-guanacaste.mp4", Preview = "/img/sunset.jpeg" },
-        new { Tipo = "img", Src = "/img/roosterfish.LaCruz.CostaRica.jpeg" },
-       
-    };
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="gallery">
-    @foreach (var item in galeria)
-    {
-        if (item.Tipo == "img")
-        {
-            <div class="card">
-                <img src="@item.Src" alt="galeria" />
+@section Styles {
+    <link rel="stylesheet" href="~/css/gallery.css" />
+}
+
+<!-- HERO IGUAL AL INDEX -->
+<section class="header-full">
+
+    <div class="hero-text">
+        <h1>Gallery</h1>
+        <p>Explore our best moments at sea</p>
+    </div>
+
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery-section py-5">
+    <div class="container">
+
+        <h2 class="text-center mb-5 fw-bold">Moments</h2>
+
+        <div class="row g-4">
+
+            <div class="col-12 col-md-4">
+                <img src="/img/1.jpg" class="gallery-img">
             </div>
-        }
-        else
-        {
-            <div class="card video-card">
-                <video preload="none" poster="@item.Preview">
-                    <source src="@item.Src" type="video/mp4">
-                </video>
+
+            <div class="col-12 col-md-4">
+                <img src="/img/2.jpg" class="gallery-img">
             </div>
-        }
-    }
-</div>
-<script>
-    document.querySelectorAll('.video-card').forEach(card => {
 
-        const video = card.querySelector('video');
+            <div class="col-12 col-md-4">
+                <img src="/img/3.jpg" class="gallery-img">
+            </div>
 
-        card.addEventListener('click', (e) => {
-            e.stopPropagation();
+            <div class="col-12 col-md-4">
+                <img src="/img/4.jpg" class="gallery-img">
+            </div>
 
-            if (video.paused) {
-                video.play();
-                card.classList.add('playing');
-            } else {
-                video.pause();
-                card.classList.remove('playing');
-            }
-        });
+            <div class="col-12 col-md-4">
+                <img src="/img/5.jpg" class="gallery-img">
+            </div>
 
-        // Cuando termina el video
-        video.addEventListener('ended', () => {
-            card.classList.remove('playing');
-        });
+            <div class="col-12 col-md-4">
+                <img src="/img/6.jpg" class="gallery-img">
+            </div>
 
-    });
-</script>
+        </div>
+
+    </div>
+</section>

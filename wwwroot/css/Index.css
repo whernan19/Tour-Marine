@@ -20,6 +20,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.5;
     background: #fff;
+    overflow-y: scroll;
 }
 
 /* WHATSAPP */
@@ -117,6 +118,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    letter-spacing: 2px;
 }
 .hero-btn::before {
     content: "";
