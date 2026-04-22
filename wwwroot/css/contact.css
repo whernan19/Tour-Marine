@@ -1,3 +1,36 @@
 ﻿.contact-hero {
     background-image: url('/img/panga.jpeg');
 }
+/* HEADER */
+header {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(15,42,53,0.80);
+    backdrop-filter: blur(8px);
+   
+}
+
+    header .nav-link {
+        color: #f7f4ee !important;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.3s ease;
+        text-shadow: 0 0 10px rgba(255,255,255,0.25), 0 0 8px rgba(255,255,255,0.15);
+    }
+.header-full {
+    position: relative;
+    z-index: 1;
+}
+.logo-text { /* selector del texto del logo donde aplicas el efecto */
+    color: #f7f4ee; /* color base del texto */
+    /* Sombra múltiple para brillo cercano y halo externo suave */
+    text-shadow: 
+    0 0 0px rgba(255,255,255,0.80), /* borde muy brillante en el centro */
+    0 0 0px rgba(255,255,255,0.15), /* brillo cercano */
+    0 0 15px rgba(255,255,255,0.40), /* halo pequeño */
+    0 0 0px rgba(0,0,0,0.10); /* sutil oscuridad para contraste */
+}

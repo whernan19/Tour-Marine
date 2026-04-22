@@ -9,3 +9,27 @@
     object-fit: cover;
     border-radius: 10px;
 }
+/* HEADER */
+header {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(15,42,53,0.80);
+    backdrop-filter: blur(8px);
+}
+
+    header .nav-link {
+        color: white !important;
+        margin: 0 15px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+body {
+    background-image: url('/img/panga.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

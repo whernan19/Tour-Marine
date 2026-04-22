@@ -44,64 +44,64 @@ body {
 
 /* HEADER */
 header {
-    width: 100%;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    background: rgba(15,42,53,0.55);
-    backdrop-filter: blur(8px);
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    height: 100px; /* Altura fija del header */
+    position: absolute; /* Saca el header del flujo normal y lo coloca encima del contenido */
+    top: 0; /* Lo pega en la parte superior */
+    left: 0; /* Lo alinea al borde izquierdo */
+    z-index: 10; /* Hace que el header esté por encima del hero (imagen de fondo) */
+    background: rgba(15,42,53,0.55); /* Color oscuro con transparencia → deja ver lo que está detrás */
+    backdrop-filter: blur(8px); /* 🔥 Desenfoca TODO lo que está detrás → crea el efecto vidrio */
 }
 
     header .nav-link {
-        color: white !important;
-        margin: 0 15px;
-        font-size: 20px;
-        font-weight: 600;
+        color: white !important; /* Fuerza el color blanco ignorando otros estilos (sobrescribe Bootstrap u otros) */
+        margin: 0 15px; /* Espacio horizontal entre los links del menú */
+        font-size: 20px; /* Tamaño del texto del menú */
+        font-weight: 600; /* Grosor de la fuente (semi-bold, más visible) */
     }
 
 /* HERO */
 .header-full {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    height: 650px;
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    background-image: url('../img/panga.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
+    width: 100vw; /* Ocupa todo el ancho de la ventana (ignora el contenedor) */
+    margin-left: calc(50% - 50vw); /* Centra el elemento full width aunque esté dentro de un container */
+    height: 650px; /* Altura del hero */
+    padding-left: 2rem; /* Espacio interno a la izquierda */
+    display: flex; /* Activa flexbox */
+    flex-direction: column; /* Organiza en columna */
+    justify-content: center; /* Centra verticalmente el contenido */
+    color: white; /* Color del texto */
+    background-image: url('../img/panga.jpeg'); /* Imagen de fondo (la que ves detrás del header) */
+    background-size: cover; /* La imagen cubre todo el espacio */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repetición de la imagen */
+    position: relative; /* Permite posicionamiento interno */
+    z-index: 1; /* Se coloca debajo del header */
 }
 
 /* TEXTO HERO */
 .hero-text {
-    text-align: center;
-    margin-top: -200px;
-    color: white;
-    text-shadow: 2px 2px 5px black;
+    text-align: center; /* Centra horizontalmente el texto */
+    margin-top: -200px; /* Sube el contenido hacia arriba (lo acerca al centro del hero o lo sobrepone) */
+    color: white; /* Color del texto en blanco */
+    text-shadow: 2px 2px 5px black; /* Sombra al texto para mejorar legibilidad sobre la imagen */
 }
 
 /* BOTÓN HERO */
 .hero-btn {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 80px;
-    background-color: rgba(200, 169, 106, 0.9);
-    border-radius: 6px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff8e8;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s ease;
+    position: absolute; /* Posiciona el botón respecto a su contenedor padre */
+    top: 90%; /* Lo coloca cerca de la parte inferior del contenedor */
+    left: 50%; /* Lo centra horizontalmente (punto de referencia) */
+    transform: translate(-50%, -50%); /* Ajusta para centrarlo exactamente en ambos ejes */
+    padding: 15px 80px; /* Espacio interno grande (botón ancho y alto) */
+    background-color: rgba(200, 169, 106, 0.9); /* Color dorado semi-transparente */
+    border-radius: 6px; /* Bordes ligeramente redondeados */
+    font-size: 28px; /* Texto grande */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff8e8; /* Color del texto (blanco cálido) */
+    text-decoration: none; /* Quita subrayado si es un link */
+    cursor: pointer; /* Cambia el cursor a mano al pasar */
+    transition: 0.3s ease; /* Suaviza animaciones (hover, etc.) */
 }
 
     .hero-btn:hover {
@@ -242,23 +242,7 @@ header {
     transition: all 0.3s ease;
 }
 
-/* VIDEO CONTACT.cshtml */
-.contact-video-hero {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* ocupa toda la altura de la ventana */
-    overflow: hidden;
-}
 
-.contact-video-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* hace que el video cubra todo el contenedor sin deformarse */
-    transform: translate(-50%, -50%);
-}
 /* SECCION DE NUESTRO EQUIPO ******************************************************************************************** */
 .team-section .col-md-7 {
     position: relative;
